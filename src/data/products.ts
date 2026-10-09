@@ -1,132 +1,242 @@
-import type { Product } from "@/types/product";
+import type {
+  Product,
+  ProductSpecification,
+} from "@/types/product";
+
+const standardLeatherSpecifications: ProductSpecification[] = [
+  {
+    label: "جنس چرم",
+    value: "چرم طبیعی",
+  },
+  {
+    label: "روش ساخت",
+    value: "کاملاً دستدوز",
+  },
+];
 
 export const products: Product[] = [
+  // محصولات قبلی
   {
     id: 1,
     name: "کیف دستی کلاسیک",
     slug: "classic-bag",
     sku: "CR-001",
-
     price: 4800000,
-
-    image: "/images/123456.webp",
-
+    image: "/Images/123456.webp",
     images: [
-      "/images/123456.webp",
-      "/images/123456.webp",
-      "/images/123456.webp",
-      "/images/123456.webp",
-      "/images/123456.webp",
+      "/Images/123456.webp",
+       "/Images/1.sm.webp",
+        "/Images/2.sm.webp",
+        "/Images/3.sm.webp",
+        "/Images/4.sm.webp",
+        "/Images/5.sm.webp",
     ],
-
     stock: "in-stock",
-
     label: "موجود در انبار",
-
     category: "women",
-
     subcategory: "handbags",
-
     customizable: true,
+    details: {
+      specifications: [...standardLeatherSpecifications],
+    },
   },
-
   {
     id: 2,
     name: "جاسوییچی چرمی",
     slug: "keychain",
     sku: "CR-002",
-
     price: 1400000,
-
-    image: "/images/123456.webp",
-
-    images: [
-      "/images/123456.webp",
-    ],
-
+    image: "/Images/123456.webp",
+    images: ["/Images/123456.webp"],
     stock: "in-stock",
-
     label: "پرفروش",
-
     category: "accessories",
-
     subcategory: "keychains",
-
     customizable: true,
+    details: {
+      specifications: [...standardLeatherSpecifications],
+    },
   },
-
   {
     id: 3,
     name: "کیف دوشی کوچک",
     slug: "small-shoulder-bag",
     sku: "CR-003",
-
     price: 2700000,
-
-    image: "/images/123456.webp",
-
-    images: [
-      "/images/123456.webp",
-    ],
-
+    image: "/Images/123456.webp",
+    images: ["/Images/123456.webp"],
     stock: "in-stock",
-
     label: "موجود",
-
     category: "women",
-
     subcategory: "shoulder-bags",
-
     customizable: true,
+    details: {
+      specifications: [...standardLeatherSpecifications],
+    },
   },
-
   {
     id: 4,
     name: "جاکارتی چرمی",
     slug: "leather-cardholder",
     sku: "CR-004",
-
     price: 1800000,
-
-    image: "/images/123456.webp",
-
-    images: [
-      "/images/123456.webp",
-    ],
-
+    image: "/Images/123456.webp",
+    images: ["/Images/123456.webp"],
     stock: "in-stock",
-
     label: "موجود",
-
     category: "accessories",
-
     subcategory: "cardholders",
-
     customizable: true,
+    details: {
+      specifications: [...standardLeatherSpecifications],
+    },
   },
-
   {
     id: 5,
     name: "کیف پول زنانه",
     slug: "womens-wallet",
     sku: "CR-005",
-
     price: 2900000,
-
-    image: "/images/123456.webp",
-
-    images: [
-      "/images/123456.webp",
-    ],
-
+    image: "/Images/123456.webp",
+    images: ["/Images/123456.webp"],
     stock: "in-stock",
-
     label: "موجود",
-
     category: "women",
-
     subcategory: "wallets",
-
     customizable: true,
+    details: {
+      specifications: [...standardLeatherSpecifications],
+    },
+  },
+
+  // محصولات بخش پرفروش‌ها
+  {
+    id: 6,
+    name: "کیف پول چرمی",
+    slug: "leather-wallet",
+    sku: "CR-006",
+    price: 4200000,
+    image: "/Images/5.sm.webp",
+    images: ["/Images/5.sm.webp"],
+    stock: "in-stock",
+    label: "موجود",
+    category: "men",
+    subcategory: "wallets",
+    customizable: true,
+    details: {
+      specifications: [...standardLeatherSpecifications],
+    },
+  },
+  {
+    id: 7,
+    name: "جاکارتی ساده",
+    slug: "simple-cardholder",
+    sku: "CR-007",
+    price: 1800000,
+    image: "/Images/3.sm.webp",
+    images: ["/Images/3.sm.webp"],
+    stock: "in-stock",
+    label: "موجود",
+    category: "accessories",
+    subcategory: "cardholders",
+    customizable: true,
+    details: {
+      specifications: [...standardLeatherSpecifications],
+    },
+  },
+  {
+    id: 8,
+    name: "کیف دستی زنانه",
+    slug: "womens-handbag",
+    sku: "CR-008",
+    price: 4800000,
+    image: "/Images/2.sm.webp",
+    images: ["/Images/2.sm.webp"],
+    stock: "in-stock",
+    label: "موجود",
+    category: "women",
+    subcategory: "handbags",
+    customizable: true,
+    details: {
+      specifications: [...standardLeatherSpecifications],
+    },
+  },
+
+  // محصولات بخش تخفیف‌ها
+  {
+    id: 9,
+    name: "جاکارتی کلاسیک",
+    slug: "cardholder-classic",
+    sku: "CR-009",
+    price: 1520000,
+    originalPrice: 1900000,
+    discountPercentage: 20,
+    image: "/Images/123456.webp",
+    images: ["/Images/123456.webp"],
+    stock: "in-stock",
+    label: "موجود",
+    category: "accessories",
+    subcategory: "cardholders",
+    customizable: true,
+    details: {
+      specifications: [...standardLeatherSpecifications],
+    },
+  },
+  {
+    id: 10,
+    name: "کیف پول مردانه",
+    slug: "mens-wallet",
+    sku: "CR-010",
+    price: 3825000,
+    originalPrice: 4500000,
+    discountPercentage: 15,
+    image: "/Images/4.sm.webp",
+    images: ["/Images/4.sm.webp"],
+    stock: "in-stock",
+    label: "موجود",
+    category: "men",
+    subcategory: "wallets",
+    customizable: true,
+    details: {
+      specifications: [...standardLeatherSpecifications],
+    },
+  },
+  {
+    id: 11,
+    name: "کیف دوشی زنانه",
+    slug: "womens-bag",
+    sku: "CR-011",
+    price: 4680000,
+    originalPrice: 5200000,
+    discountPercentage: 10,
+    image: "/Images/5.sm.webp",
+    images: ["/Images/5.sm.webp"],
+    stock: "in-stock",
+    label: "موجود",
+    category: "women",
+    subcategory: "shoulder-bags",
+    customizable: true,
+    details: {
+      specifications: [...standardLeatherSpecifications],
+    },
+  },
+  {
+    id: 12,
+    name: "بوک مارک چرمی",
+    slug: "leather-bookmark",
+    sku: "CR-012",
+    price: 765000,
+    originalPrice: 850000,
+    discountPercentage: 10,
+    image: "/Images/123456.webp",
+    images: ["/Images/123456.webp"],
+    stock: "in-stock",
+    label: "موجود",
+    category: "accessories",
+    subcategory: "bookmarks",
+    customizable: true,
+    details: {
+      specifications: [...standardLeatherSpecifications],
+    },
   },
 ];

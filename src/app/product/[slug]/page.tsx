@@ -1,26 +1,33 @@
+import ProductGallery from "@/components/ProductGallery";
+
+import { notFound } from "next/navigation";
+import type { Product } from "@/types/product";
+
+
 import Image from "next/image";
 import Link from "next/link";
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import ProductDetails from "@/components/ProductDetails";
 
+
 import { products } from "@/data/products";
 
-const product = products[0];
 
-const galleryImages = [
-  "/images/123456.webp",
-  "/images/123456.webp",
-  "/images/123456.webp",
-  "/images/123456.webp",
-  "/images/123456.webp",
-];
+const categoryLabels: Record<Product["category"], string> = {
+  men: "مردانه",
+  women: "زنانه",
+  accessories: "اکسسوری",
+};
 
-const relatedProducts = products.filter(
-  (item) => item.slug !== product.slug
-);
+const subcategoryLabels: Record<string, string> = {
+  handbags: "کیف دستی",
+  keychains: "جاسوییچی",
+  "shoulder-bags": "کیف دوشی",
+  cardholders: "جاکارتی",
+  wallets: "کیف پول",
+};
 
 const reviews = [
   {
@@ -37,7 +44,70 @@ const reviews = [
   },
 ];
 
-export default function ProductPage() {
+type ProductPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export default async function ProductPage({
+  params,
+}: ProductPageProps) {
+  const { slug } = await params;
+
+  const product = products.find((item) => item.slug === slug);
+
+  if (!product) {
+    notFound();
+  }
+
+ const relatedProducts = products
+  .filter((item) => item.slug !== product.slug)
+  .sort((a, b) => {
+    const getRelevanceScore = (item: typeof product) => {
+      let score = 0;
+
+      // اولویت بالاتر برای محصولات هم‌زیر‌دسته
+      if (
+        product.subcategory &&
+        item.subcategory === product.subcategory
+      ) {
+        score += 2;
+      }
+
+      // اولویت بیشتر برای محصولات هم‌دسته
+      if (item.category === product.category) {
+        score += 1;
+      }
+
+      return score;
+    };
+
+    return getRelevanceScore(b) - getRelevanceScore(a);
+  })
+  .slice(0, 4);
+
+  const categoryPath = `/category/${product.category}`;
+
+  const subcategoryPath = product.subcategory
+    ? `${categoryPath}/${product.subcategory}`
+    : categoryPath;
+
+  const categoryLabel = categoryLabels[product.category];
+
+  const subcategoryLabel = product.subcategory
+    ? subcategoryLabels[product.subcategory] ?? product.subcategory
+    : null;
+
+  const hasDiscount =
+    product.originalPrice !== undefined &&
+    product.discountPercentage !== undefined;
+
+  const finalPrice = hasDiscount
+    ? Math.round(
+        product.originalPrice! *
+          (1 - product.discountPercentage! / 100)
+      )
+    : product.price;
+
   return (
     <>
       <Header />
@@ -54,33 +124,33 @@ export default function ProductPage() {
             dir="rtl"
             className="mb-6 flex items-center justify-end gap-2 text-xs text-black/55"
           >
-            <Link href="/" className="transition hover:text-[#4A2E19]">
-              خانه
-            </Link>
+           <Link href="/" className="transition hover:text-[#4A2E19]">
+                  خانه
+                </Link>
 
-            <span>/</span>
+                <span>/</span>
 
-            <Link
-              href="/category/women"
-              className="transition hover:text-[#4A2E19]"
-            >
-              زنانه
-            </Link>
+                <Link
+                  href={categoryPath}
+                  className="transition hover:text-[#4A2E19]"
+                >
+                  {categoryLabel}
+                </Link>
 
-            <span>/</span>
+                {product.subcategory && (
+                  <>
+                  <span>/</span>                
+                    <Link
+                      href={subcategoryPath}
+                      className="transition hover:text-[#4A2E19]"
+                    >
+                      {subcategoryLabel}
+                    </Link>
+                  </>
+                )}
+                <span>/</span>
 
-            <Link
-              href="/category/women/handbags"
-              className="transition hover:text-[#4A2E19]"
-            >
-              کیف دستی
-            </Link>
-
-            <span>/</span>
-
-            <span className="text-black/80">
-              کیف دستی کلاسیک
-            </span>
+                <span className="text-black/80">{product.name}</span>
           </div>
 
 
@@ -90,137 +160,14 @@ export default function ProductPage() {
             className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-14"
           >
 
-            {/* =================================================
-                GALLERY
-            ================================================== */}
-            <div className="grid grid-cols-[64px_minmax(0,1fr)] gap-4">
+             {/* GALLERY */}
+  <ProductGallery
+    key={product.slug}
+    productName={product.name}
+    image={product.image}
+    images={product.images}
+  />
 
-              {/* Thumbnails */}
-              <div className="flex flex-col items-center gap-3">
-
-                {product.images.map((image, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    aria-label={`تصویر ${index + 1} محصول`}
-                    className="relative h-14 w-14 overflow-hidden bg-[#DCC5AA] transition hover:opacity-75 lg:h-[58px] lg:w-[58px]"
-                  >
-                    <Image
-                      src={image}
-                      alt={`تصویر ${index + 1} کیف دستی کلاسیک`}
-                      fill
-                      className="object-cover"
-                    />
-                  </button>
-                ))}
-
-                {/* Down Arrow */}
-                <button
-                  type="button"
-                  aria-label="تصاویر بیشتر"
-                  className="mt-1 flex h-8 w-8 items-center justify-center text-[#4A2E19]"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
-                </button>
-
-              </div>
-
-
-              {/* Main Image */}
-              <div className="relative aspect-[1.15/1] overflow-hidden bg-[#DCC5AA]">
-
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  priority
-                  className="object-cover"
-                />
-
-
-                {/* Previous */}
-                <button
-                  type="button"
-                  aria-label="تصویر قبلی"
-                  className="absolute left-4 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/70 bg-black/10 text-white backdrop-blur-sm transition hover:bg-black/20"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="15 18 9 12 15 6" />
-                  </svg>
-                </button>
-
-
-                {/* Next */}
-                <button
-                  type="button"
-                  aria-label="تصویر بعدی"
-                  className="absolute right-4 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/70 bg-black/10 text-white backdrop-blur-sm transition hover:bg-black/20"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="9 18 15 12 9 6" />
-                  </svg>
-                </button>
-
-
-                {/* Fullscreen Icon */}
-                <button
-                  type="button"
-                  aria-label="نمایش تمام صفحه"
-                  className="absolute bottom-4 right-4 flex h-8 w-8 items-center justify-center text-white"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="17"
-                    height="17"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="8 3 3 3 3 8" />
-                    <polyline points="16 3 21 3 21 8" />
-                    <polyline points="8 21 3 21 3 16" />
-                    <polyline points="21 16 21 21 16 21" />
-                  </svg>
-                </button>
-
-              </div>
-
-            </div>
 
 
             {/* =================================================
@@ -233,17 +180,25 @@ export default function ProductPage() {
               </h1>
 
               <p className="mt-5 text-2xl font-medium text-[#1A1A1C]">
-                {product.price}
+                  {finalPrice.toLocaleString("fa-IR")} تومان
               </p>
 
 
               {/* Stock */}
               <div className="mt-6 flex items-center gap-2">
 
-                <span className="h-2.5 w-2.5 rounded-full bg-green-500" />
+                <span
+                  className={`h-2.5 w-2.5 rounded-full ${
+                    product.stock === "in-stock"
+                      ? "bg-green-500"
+                      : "bg-red-500"
+                  }`}
+                />
 
                 <span className="text-sm">
-                  {product.stock}
+                  {product.stock === "in-stock"
+                    ? "موجود در انبار"
+                    : "ناموجود"}
                 </span>
 
               </div>
@@ -287,7 +242,7 @@ export default function ProductPage() {
 
               {/* Custom */}
               <Link
-                href="/custom/simple?product=CR-001"
+                href={`/custom/simple?product=${encodeURIComponent(product.sku)}`}
                 className="mt-4 flex h-11 items-center justify-center gap-4 border border-[#1A1A1C] text-sm font-medium transition hover:bg-black/5"
               >
                 <span>
@@ -317,7 +272,7 @@ export default function ProductPage() {
         </section>
 
 
-         <ProductDetails />
+         <ProductDetails product={product} />
          
 
         {/* =====================================================

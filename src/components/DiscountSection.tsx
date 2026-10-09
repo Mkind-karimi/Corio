@@ -1,52 +1,12 @@
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
-import type { Product } from "@/types/product";
+import { products } from "@/data/products";
 
-const discountedProducts: Product[] = [
-  {
-    id: 1,
-    name: "جاکارتی کلاسیک",
-    slug: "cardholder-classic",
-    image: "/images/123456.webp",
-    price: 1520000,
-    originalPrice: 1900000,
-    discountPercentage: 20,
-    label: "موجود",
-  },
-
-  {
-    id: 2,
-    name: "کیف پول مردانه",
-    slug: "mens-wallet",
-    image: "/images/product-sale-02.jpg",
-    price: 3825000,
-    originalPrice: 4500000,
-    discountPercentage: 15,
-    label: "موجود",
-  },
-
-  {
-    id: 3,
-    name: "کیف دوشی زنانه",
-    slug: "womens-bag",
-    image: "/images/product-sale-03.jpg",
-    price: 4680000,
-    originalPrice: 5200000,
-    discountPercentage: 10,
-    label: "موجود",
-  },
-
-  {
-    id: 4,
-    name: "بوک مارک چرمی",
-    slug: "leather-bookmark",
-    image: "/images/product-sale-04.jpg",
-    price: 765000,
-    originalPrice: 850000,
-    discountPercentage: 10,
-    label: "موجود",
-  },
-];
+const discountedProducts = products.filter(
+  (product) =>
+    product.originalPrice !== undefined &&
+    product.discountPercentage !== undefined
+);
 
 export default function DiscountSection() {
   return (

@@ -1,44 +1,17 @@
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
-import type { Product } from "@/types/product";
+import { products } from "@/data/products";
 
-const bestSellingProducts: Product[] = [
-  {
-    id: 1,
-    name: "کیف پول چرمی",
-    slug: "leather-wallet",
-    image: "/images/bestseller-01.jpg",
-    price: 4200000,
-    label: "موجود",
-  },
-
-  {
-    id: 2,
-    name: "جاکارتی ساده",
-    slug: "simple-cardholder",
-    image: "/images/bestseller-02.jpg",
-    price: 1800000,
-    label: "موجود",
-  },
-
-  {
-    id: 3,
-    name: "کیف دستی زنانه",
-    slug: "womens-handbag",
-    image: "/images/bestseller-03.jpg",
-    price: 4800000,
-    label: "موجود",
-  },
-
-  {
-    id: 4,
-    name: "جاسوییچی چرمی",
-    slug: "keychain",
-    image: "/images/bestseller-04.jpg",
-    price: 1400000,
-    label: "موجود",
-  },
+const bestSellerSlugs = [
+  "leather-wallet",
+  "simple-cardholder",
+  "womens-handbag",
+  "keychain",
 ];
+
+const bestSellingProducts = bestSellerSlugs
+  .map((slug) => products.find((product) => product.slug === slug))
+  .filter((product) => product !== undefined);
 
 export default function BestSellers() {
   return (

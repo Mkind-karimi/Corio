@@ -1,3 +1,34 @@
+export type ProductSpecification = {
+  label: string;
+  value: string;
+};
+
+export type ProductDimension = {
+  label: string;
+  value: string;
+};
+
+export type ProductCareInstruction = {
+  title: string;
+  description: string;
+};
+
+export type ProductDetailsData = {
+  specifications: ProductSpecification[];
+
+  dimensions?: ProductDimension[];
+
+  capacity?: string;
+
+  careInstructions?: ProductCareInstruction[];
+
+  productionTime?: string;
+
+  shipping?: string;
+
+  warranty?: string;
+};
+
 export type Product = {
   id: number;
 
@@ -26,4 +57,6 @@ export type Product = {
   originalPrice?: number;
 
   discountPercentage?: number;
+
+  details: ProductDetailsData;
 };
