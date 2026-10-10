@@ -6,20 +6,21 @@ export default function CategorySection() {
     <section
       id="categories"
       dir="rtl"
-      className="bg-[#E9D8C4] mx-auto  px-6 py-16 lg:px-10 lg:py-20"
+      className="bg-[#E9D8C4] mx-auto px-6 py-16 lg:px-10 lg:py-20"
     >
       <div className="grid grid-cols-1 gap-5 md:grid-cols-4">
 
         {/* کالکشن */}
         <Link
-          href="/category/men"
-          id="men"
+          href="/#bestsellers"
+          id="collection"
           className="group relative aspect-[1.15/1] overflow-hidden"
         >
           <Image
-            src="/images/category-men.jpg"
-            alt=" کالکشن"
+            src="/Images/123456.webp"
+            alt="منتخبی از محصولات چرمی Corio"
             fill
+            sizes="(max-width: 767px) 100vw, 25vw"
             className="object-cover transition duration-700 group-hover:scale-105"
           />
 
@@ -43,9 +44,10 @@ export default function CategorySection() {
           className="group relative aspect-[1.15/1] overflow-hidden"
         >
           <Image
-            src="/images/123456.webp"
-            alt="محصولات مردانه"
+            src="/Images/5.sm.webp"
+            alt="محصولات چرمی مردانه"
             fill
+            sizes="(max-width: 767px) 100vw, 25vw"
             className="object-cover transition duration-700 group-hover:scale-105"
           />
 
@@ -62,7 +64,6 @@ export default function CategorySection() {
           </div>
         </Link>
 
-
         {/* زنانه */}
         <Link
           href="/category/women"
@@ -70,9 +71,10 @@ export default function CategorySection() {
           className="group relative aspect-[1.15/1] overflow-hidden"
         >
           <Image
-            src="/images/category-women.jpg"
-            alt="محصولات زنانه"
+            src="/Images/2.sm.webp"
+            alt="محصولات چرمی زنانه"
             fill
+            sizes="(max-width: 767px) 100vw, 25vw"
             className="object-cover transition duration-700 group-hover:scale-105"
           />
 
@@ -89,7 +91,6 @@ export default function CategorySection() {
           </div>
         </Link>
 
-
         {/* اکسسوری */}
         <Link
           href="/category/accessories"
@@ -97,9 +98,10 @@ export default function CategorySection() {
           className="group relative aspect-[1.15/1] overflow-hidden"
         >
           <Image
-            src="/images/category-accessories.jpg"
-            alt="اکسسوری‌ها"
+            src="/Images/4.sm.webp"
+            alt="اکسسوری‌های چرمی Corio"
             fill
+            sizes="(max-width: 767px) 100vw, 25vw"
             className="object-cover transition duration-700 group-hover:scale-105"
           />
 

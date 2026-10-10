@@ -11,28 +11,28 @@ export default function Header() {
           aria-label="منوی اصلی"
         >
           <Link
-            href="#collections"
+            href="/#bestsellers"
             className="text-sm font-medium text-[#1A1A1C] transition duration-300 hover:text-[#4A2E19]"
           >
             کالکشن
           </Link>
 
           <Link
-            href="#men"
+            href="/category/men"
             className="text-sm font-medium text-[#1A1A1C] transition duration-300 hover:text-[#4A2E19]"
           >
             مردانه
           </Link>
 
           <Link
-            href="#women"
+            href="/category/women"
             className="text-sm font-medium text-[#1A1A1C] transition duration-300 hover:text-[#4A2E19]"
           >
             زنانه
           </Link>
 
           <Link
-            href="#accessories"
+            href="/category/accessories"
             className="text-sm font-medium text-[#1A1A1C] transition duration-300 hover:text-[#4A2E19]"
           >
             اکسسوری

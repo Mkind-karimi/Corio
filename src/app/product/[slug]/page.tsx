@@ -1,5 +1,5 @@
 import ProductGallery from "@/components/ProductGallery";
-
+import AddToCartButton from "@/components/AddToCartButton";
 import { notFound } from "next/navigation";
 import type { Product } from "@/types/product";
 
@@ -214,30 +214,10 @@ export default async function ProductPage({
 
 
               {/* Add to cart */}
-              <Link
-                href="/cart"
-                className="mt-7 flex h-11 items-center justify-center gap-4 bg-[#4A2E19] text-sm font-medium text-white transition hover:bg-[#382214]"
-              >
-                <span>
-                  افزودن به سبد خرید
-                </span>
-
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="21"
-                  height="21"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M7.5 9V7a4.5 4.5 0 0 1 9 0v2" />
-                  <path d="M4.5 9h15l-1.1 9.2a2 2 0 0 1-2 1.8H7.6a2 2 0 0 1-2-1.8L4.5 9Z" />
-                  <path d="M8.5 13h7" />
-                </svg>
-              </Link>
+                <AddToCartButton
+                  productSlug={product.slug}
+                  stock={product.stock}
+                />
 
 
               {/* Custom */}
