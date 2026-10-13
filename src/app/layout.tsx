@@ -1,17 +1,22 @@
 
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Vazirmatn } from "next/font/google";
+
 import { CartProvider } from "@/components/CartProvider";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const vazirmatn = Vazirmatn({
+  subsets: ["arabic", "latin"],
+  variable: "--font-vazirmatn",
+  display: "swap",
+  preload: true,
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -20,11 +25,13 @@ export const metadata: Metadata = {
     "فروشگاه محصولات چرمی Corio؛ طراحی خاص، چرم طبیعی و ساخت دستدوز.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: LayoutProps<"/">) {
   return (
     <html
       lang="fa"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${vazirmatn.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <CartProvider>{children}</CartProvider>

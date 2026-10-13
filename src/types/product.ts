@@ -52,8 +52,6 @@ export type Product = {
 
   subcategory?: string;
 
-  customizable: boolean;
-
   originalPrice?: number;
 
   discountPercentage?: number;

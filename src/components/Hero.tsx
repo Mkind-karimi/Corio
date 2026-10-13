@@ -1,20 +1,22 @@
+
 import Image from "next/image";
+
 export default function Hero() {
   return (
     <section dir="rtl" className="relative overflow-hidden bg-[#E9D8C4]">
       <div className="relative grid min-h-[calc(100dvh-82px)] grid-cols-1 lg:grid-cols-2">
 
         {/* محل تصویر Hero */}
-            <div className="absolute inset-0 overflow-hidden">
-                <Image
-                  src="/images/123456.webp"
-                  alt="محصول چرمی دستدوز Corio"
-                  fill
-                  priority
-                  className="object-cover"
-                />
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src="/Images/heroimage.jpg"
+            alt="محصول چرمی دستدوز Corio"
+            fill
+            priority
+            className="object-cover"
+          />
 
-            <div className="absolute inset-0 bg-black/5" />
+          <div className="absolute inset-0 bg-black/5" />
         </div>
 
         {/* متن Hero */}
@@ -33,12 +35,10 @@ export default function Hero() {
 
             <p className="mt-6 max-w-lg text-sm leading-8 text-black/65 sm:text-base">
               محصولات چرمی دستدوز Corio از چرم طبیعی باکیفیت
-              ساخته می‌شوند؛ با الهام از اصالت ایتالیایی و با
-              امکان شخصی‌سازی برای شما.
+              ساخته می‌شوند؛ با الهام از اصالت ایتالیایی.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">
-
               <a
                 href="/shop"
                 className="inline-flex items-center justify-center gap-3 bg-[#4A2E19] px-8 py-4 text-sm font-medium text-white transition duration-300 hover:bg-[#382214]"
@@ -46,15 +46,6 @@ export default function Hero() {
                 مشاهده محصولات
                 <span>←</span>
               </a>
-
-              <a
-                href="#custom"
-                className="inline-flex items-center gap-2 border-b border-[#4A2E19] pb-1 text-sm font-medium text-[#4A2E19] transition duration-300 hover:opacity-70"
-              >
-                کاستوم کردن محصول
-                <span>←</span>
-              </a>
-
             </div>
 
           </div>

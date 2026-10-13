@@ -20,13 +20,13 @@ export default function Footer() {
 
           <p className="mt-5 text-sm leading-8 text-black/60">
             Corio برند محصولات چرمی دستدوز است؛
-            با تمرکز بر چرم طبیعی، ساخت دست و امکان
-            شخصی‌سازی محصولات.
+            با تمرکز بر چرم طبیعی، کیفیت ساخت و
+            طراحی ماندگار.
           </p>
 
           <div className="mt-6">
             <Image
-              src="/images/corio-logo.png"
+              src="/Images/corio123456.png"
               alt="Corio"
               width={160}
               height={64}

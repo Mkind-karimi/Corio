@@ -13,7 +13,7 @@ export default function DiscountSection() {
     <section
       id="discounts"
       dir="rtl"
-      className="mx-auto  px-6 pb-20 lg:px-10 text-[#1A1A1C] bg-[#E9D8C4]"
+      className="mx-auto max-w-[1440px] px-6 pb-20 lg:px-10 text-[#1A1A1C] "
     >
       {/* Section Header */}
       <div className="mb-8 flex items-end justify-between border-b border-black/10 pb-5">

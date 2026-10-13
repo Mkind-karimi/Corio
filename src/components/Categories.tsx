@@ -6,7 +6,7 @@ export default function CategorySection() {
     <section
       id="categories"
       dir="rtl"
-      className="bg-[#E9D8C4] mx-auto px-6 py-16 lg:px-10 lg:py-20"
+      className=" mx-auto max-w-[1440px] px-6 py-16 lg:px-10 lg:py-20"
     >
       <div className="grid grid-cols-1 gap-5 md:grid-cols-4">
 
@@ -17,7 +17,7 @@ export default function CategorySection() {
           className="group relative aspect-[1.15/1] overflow-hidden"
         >
           <Image
-            src="/Images/123456.webp"
+            src="/Images/4.sm.jpg"
             alt="منتخبی از محصولات چرمی Corio"
             fill
             sizes="(max-width: 767px) 100vw, 25vw"
@@ -44,7 +44,7 @@ export default function CategorySection() {
           className="group relative aspect-[1.15/1] overflow-hidden"
         >
           <Image
-            src="/Images/5.sm.webp"
+            src="/Images/4.sm.jpg"
             alt="محصولات چرمی مردانه"
             fill
             sizes="(max-width: 767px) 100vw, 25vw"
@@ -71,7 +71,7 @@ export default function CategorySection() {
           className="group relative aspect-[1.15/1] overflow-hidden"
         >
           <Image
-            src="/Images/2.sm.webp"
+            src="/Images/4.sm.jpg"
             alt="محصولات چرمی زنانه"
             fill
             sizes="(max-width: 767px) 100vw, 25vw"
@@ -98,7 +98,7 @@ export default function CategorySection() {
           className="group relative aspect-[1.15/1] overflow-hidden"
         >
           <Image
-            src="/Images/4.sm.webp"
+            src="/Images/4.sm.jpg"
             alt="اکسسوری‌های چرمی Corio"
             fill
             sizes="(max-width: 767px) 100vw, 25vw"

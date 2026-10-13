@@ -1,7 +1,7 @@
 export default function TrustFeatures() {
   return (
-    <section dir="rtl" className="border-y border-black/10 bg-[#E9D8C4] text-[#1A1A1C]">
-      <div className="mx-auto grid max-w-[1440px] grid-cols-2 lg:grid-cols-4">
+    <section dir="rtl" className="border-y border-black/10  text-[#1A1A1C]">
+      <div className="mx-auto grid max-w-[1440px] grid-cols-2 lg:grid-cols-3">
 
         {/* Trust 01 - Warranty */}
         <div className="flex flex-col items-center justify-center border-l border-black/10 px-6 py-10 text-center last:border-l-0">
@@ -56,7 +56,7 @@ export default function TrustFeatures() {
         </div>
 
         {/* Trust 03 - Handmade */}
-        <div className="flex flex-col items-center justify-center border-l border-black/10 px-6 py-10 text-center">
+        <div className="col-span-2 flex flex-col items-center justify-center border-l border-black/10 px-6 py-10 text-center last:border-l-0 lg:col-span-1" >
           <div className="mb-4 text-[#4A2E19]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -82,30 +82,6 @@ export default function TrustFeatures() {
           </p>
         </div>
 
-        {/* Trust 04 - Customization */}
-        <div className="flex flex-col items-center justify-center px-6 py-10 text-center">
-          <div className="mb-4 text-[#4A2E19]">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="31"
-              height="31"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.4"
-            >
-              <path d="M12 2l3 7 7 .5-5.3 4.7L18.3 21 12 17l-6.3 4 1.6-6.8L2 9.5 9 9l3-7z" />
-            </svg>
-          </div>
-
-          <h3 className="text-sm font-bold">
-            امکان شخصی‌سازی
-          </h3>
-
-          <p className="mt-2 text-xs leading-6 text-black/50">
-            ساده یا اختصاصی
-          </p>
-        </div>
 
       </div>
     </section>

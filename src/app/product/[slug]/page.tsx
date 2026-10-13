@@ -218,34 +218,6 @@ export default async function ProductPage({
                   productSlug={product.slug}
                   stock={product.stock}
                 />
-
-
-              {/* Custom */}
-              <Link
-                href={`/custom/simple?product=${encodeURIComponent(product.sku)}`}
-                className="mt-4 flex h-11 items-center justify-center gap-4 border border-[#1A1A1C] text-sm font-medium transition hover:bg-black/5"
-              >
-                <span>
-                  می‌خواهم کاستوم کنم
-                </span>
-
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M15.5 4.5l4 4" />
-                  <path d="M14 6l4 4" />
-                  <path d="M5 19l3.5-.7L18.8 8a1.7 1.7 0 0 0 0-2.4l-.4-.4a1.7 1.7 0 0 0-2.4 0L5.7 16.8 5 19Z" />
-                </svg>
-              </Link>
-
             </div>
 
           </div>

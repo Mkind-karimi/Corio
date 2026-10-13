@@ -6,7 +6,7 @@ export default function LoyaltyBanner() {
     <section
       id="collections"
       dir="rtl"
-      className="mx-auto  px-6 pb-16 lg:px-10 bg-[#E9D8C4]"
+      className="mx-auto max-w-[1440px] px-6 pb-16 lg:px-10 "
     >
       <div className="overflow-hidden bg-[#4A2E19] text-white">
 
@@ -16,7 +16,7 @@ export default function LoyaltyBanner() {
           <div className="relative min-h-[250px]">
 
             <Image
-              src="/images/loyalty.jpg"
+              src="/Images/comm.jpg"
               alt="جزئیات چرم Corio"
               fill
               className="object-cover"
